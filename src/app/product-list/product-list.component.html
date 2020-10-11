@@ -1,0 +1,348 @@
+<section id="content">
+    <div class="app-container">
+        <div class="rct-app-content">
+            <div class="rct-page">
+                <div class="content-wrapper">
+                    <div class="rct-page-content">
+                        <div class="shop-wrapper" style="margin-right: 5px;">
+                            <div class="mb-30 filter-sm-wrap d-block d-md-none">
+                                <div class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+                                    style="border-radius: 8px;">
+                                    <div class="MuiButtonBase-root MuiAccordionSummary-root filter-icon" tabindex="0"
+                                        role="button" aria-disabled="false" aria-expanded="false">
+                                        <div class="MuiAccordionSummary-content"><span class="p-0">Filtros</span></div>
+                                        <div class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+                                            aria-disabled="false" aria-hidden="true"><span
+                                                class="MuiIconButton-label"><i class="zmdi zmdi-tune"></i></span><span
+                                                class="MuiTouchRipple-root"></span>
+                                        </div>
+                                    </div>
+                                    <div class="MuiCollapse-container MuiCollapse-hidden" style="min-height: 0px;">
+                                        <div class="MuiCollapse-wrapper">
+                                            <div class="MuiCollapse-wrapperInner">
+                                                <div role="region">
+                                                    <div class="MuiAccordionDetails-root">
+                                                        <div class="row justify-content-between w-100">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex" style="margin-top: -24px;">
+                                <div class="col-lg-5 col-md-4 d-none d-md-block pt-5 col-padding-12">
+                                    <p class="mb-10 pt-20" style="font-size: 18px;">
+                                       <span *ngIf="search"> Resultados para <b
+                                            style="color: rgb(65, 64, 66); font-weight: normal; font-size: 24px;"> </b>: <strong>{{wordSearch}}</strong></span>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="d-flex mb-60">
+
+                                <div class="col-lg-9 col-md-8 col-sm-12 col-padding-12">
+                                    <div class="shop-content">
+                                        <div style="" class="ais-Hits">
+                                            <ul class="ais-Hits-list">
+                                                <li *ngFor="let item of products | paginate: { itemsPerPage: 12, currentPage: page, totalItems: count }" class="ais-Hits-item">
+                                                    <div class="">
+                                                        <div
+                                                            class="rct-block  product-block flex-column justify-content-between overflow-hidden bg-white rct-block__hover-shadow">
+                                                            <a 
+                                                                style="text-decoration: none; height: 100%; display: inline; background-color: white;">
+                                                                <div id="913960"
+                                                                    class="overlay-wrap overflow-hidden bg-white"
+                                                                    style="display: flex; align-items: center; justify-content: center; max-height: 220px; width: 100%;">
+                                                                    <div class="text-center">
+                                                                        <div class="product-image-shadow"></div>
+                                                                        <div class="d-flex labels-container"></div>
+                                                                        <div class="d-flex cyber-lider-cards-container">
+                                                                        </div>
+                                                                        <div id="image" class="bg-white">
+                                                                            <div><img id="lazy-img"
+                                                                                    class="img-hover-zoom img-fluid m-auto "
+                                                                                    alt="{{item.description}}"
+                                                                                    src="https://{{item.image}}"
+                                                                                    style="filter: unset; min-width: 220px; max-height: 220px;">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" product-info">
+                                                                    <div class="d-flex text-left product-description  ">
+                                                                        <div><span class=""
+                                                                                style="font-weight: bold; color: rgb(0, 0, 0);">{{item.brand}}</span><span>
+                                                                                {{item.description}}</span></div>
+                                                                    </div>
+                                                                    <div class="mb-12">
+                                                                        <div class="walmart-sales-price d-flex "
+                                                                            style="display: flex; align-items: center;">
+                                                                            {{ item.price | currency:'CLP':'symbol-narrow' }}
+                                                                            <span *ngIf="item.percentajeDiscount !== null" >
+                                                                            <div class="walmart-discount-percentage-card"
+                                                                                style="margin-top: 1px; margin-left: 6px;">
+                                                                                {{ item.percentajeDiscount}}%
+                                                                            </div></span>
+                                                                        </div>
+                                                                        <div class="d-flex"><span
+                                                                                class="walmart-reference-price">{{ item.originalPrice |  currency:'CLP':'symbol-narrow' }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                            <div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div class="paginator text-center">
+                                            <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)" autoHide="true"
+                                            responsive="true">
+                                            </pagination-controls>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rct-app-content">
+        <div>
+            <div class="content-wrapper">
+                <div class="shop-wrapper" style="background: rgb(245, 245, 245); margin: -1px auto auto;">
+                    <div class="rct-page-search">
+                        <div class="pb-30 ">
+                            <div class="row">
+                                <div class="col-1"></div>
+                                <div id="renderLegalInfo" class="col-12 bg-white cp-no-select"
+                                    style="padding: 10px; box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px; border-radius: 8px;">
+                                    <span class="span-legal">Ver Información Legal </span><span class="pull-right"><img
+                                            alt="white-arrow" height="18" src="https://www.lider.cl/catalogo/images/arrow_blue.svg"
+                                            style="transform: none;"></span>
+                                    <div class="collapse">
+                                        <div class="card-body">
+                                            <div id="legal-text" style="font-size: 10px; text-align: justify;">
+                                                <div> <b>Ahorra es cuando</b> <br> Promoción “Ahorra es cuando”, válida
+                                                    solo en www.lider.cl desde el 24 de Septiembre al 01 de Octubre de
+                                                    2020, ambas fechas inclusive. <br><br> <b>Cuenta
+                                                        Regresiva</b><br>Promoción y precios válidos solo en <a
+                                                        href="https://www.lider.cl">www.lider.cl</a> y <a
+                                                        href="https://www.atucasa.lider.cl">www.atucasa.lider.cl</a>,
+                                                    del 31 agosto al 2 de septiembre de 2020, ambas fechas inclusive, o
+                                                    hasta agotar stock de las unidades indicadas para cada producto.
+                                                    Excluye otras promociones vigentes.<br><br><b>Preventa Galaxy
+                                                        Note20</b><br>Promoción válida desde el 28 de agosto de 2020 al
+                                                    9 de septiembre de 2020, ambas fechas inclusive. El despacho gratis
+                                                    solo aplica a los ítems 734258 – 734259 -734260 – 734256 -734257. El
+                                                    Cheque Ahorro otorgado por 150.000 Pesos Mi Club, correspondiente a
+                                                    compras del modelo Samsung Note 20 Ultra, ítems 734258 – 734259
+                                                    -734260 , estará disponible a partir del día 15 de Septiembre del
+                                                    2020 hasta el 30 de Noviembre del 2020, pudiendo ser utilizado en
+                                                    nuestros locales Lider, Express de Lider y <a
+                                                        href="https://www.lider.cl/supermercado/">Lider.cl/supermercado/</a>.
+                                                    El Cheque ahorro, solo puede ser utilizado por el Rut al cual se le
+                                                    emitió el beneficio, pudiendo solo ser utilizado un cheque ahorro
+                                                    por compra. Para el Cheque Ahorro otorgado por 100.000 Pesos Mi
+                                                    Club, correspondiente a compras del modelo Samsung Note 20, ítems
+                                                    734256 -734257, estará disponible a partir del día 15 de Septiembre
+                                                    del 2020 hasta el 30 de Noviembre del 2020, pudiendo ser utilizado
+                                                    en nuestros locales Lider, Express de Lider y <a
+                                                        href="https://www.lider.cl/supermercado/">Lider.cl/supermercado/</a>.
+                                                    El Cheque ahorro, solo puede ser utilizado por el Rut al cual se le
+                                                    emitió el beneficio, pudiendo solo ser utilizado un cheque ahorro
+                                                    por compra.<br><br><b>10 Cuotas sin interés en productos
+                                                        Samsung</b><br>Vigencia del 16.07.2020 al 16.08.2020 sólo
+                                                    pagando con Tarjetas de Crédito Lider en productos Samsung, cuyos
+                                                    valores unitarios sean iguales o mayores a $300.000. Valido solo en
+                                                    productos de categorías de: Telefonía, Tablet, Televisores y Línea
+                                                    Blanca en Lider y <a href="https://www.lider.cl/">Lider.cl</a>. Para
+                                                    categoría Línea blanca, válido desde el 05.08.2020. Montos
+                                                    referenciales: Costo total del crédito $ 300.000, CAE 0,0%. CAE y
+                                                    Costo total del crédito calculado bajo un monto de $300.000 en
+                                                    10Cuotas. CAE 0%.<br><br><b>CDF DE SAMSUNG:</b><br>Para conocer las
+                                                    condiciones de la campaña CDF de Samsung, ingresa <a
+                                                        href="https://wlmstatic.lider.cl/contentassets/mkt/PDF/promo_samsung_2020.pdf">aquí</a>.<br><br>
+                                                    <b>INSTALACIÓN DE PARED LED SAMSUNG
+                                                    </b><br>Para conocer las condiciones de la campaña Instalación de
+                                                    pared LED Samsung, ingresa <a
+                                                        href="https://wlmstatic.lider.cl/contentassets/mkt/PDF/Instalacion_Pared.pdf">aquí</a>.<br><br><b>6%
+                                                        DE DESCUENTO EN LIDER, EXPRESS DE LIDER Y LIDER.CL CON TARJETAS
+                                                        DE CRÉDITO LIDER</b><br>La Promoción se denominará “6% de
+                                                    descuento en Lider, Express de Lider y <a
+                                                        href="https://www.lider.cl/">Lider.cl</a>.con Tarjetas de
+                                                    Crédito Lider”, en adelante la “Promoción”, que se realizará entre
+                                                    el 01 de enero de 2020 y el 31 de diciembre de 2022, ambas fechas
+                                                    inclusive. La Promoción consiste en que todos los clientes que
+                                                    realicen compras los días lunes durante la vigencia de la Promoción
+                                                    en Lider, Express de Lider y <a
+                                                        href="https://www.lider.cl/">Lider.cl</a> tendrán un descuento
+                                                    de un 6% en el total de su compra pagando con tarjetas de crédito
+                                                    Lider, sin perjuicio de las restricciones que se indican en las
+                                                    bases de la promoción. <a
+                                                        href="https://wlmstatic.lider.cl/contentassets/mkt/PDF/bases_prom_6porciento_lbci.pdf"><b>Ver
+                                                            bases de la promoción aquí</b></a>.<br><br><b>CONDICIONES DE
+                                                        VENTA DE CAJAS LISTAS:</b><br>
+                                                    <li type="disc">Máximo de venta: 50 Cajas de Abarrotes, 50 Cajas de
+                                                        Limpieza y/o 50 Cajas de Mundo Bebé por RUT por día.</li><br>
+                                                    <li type="disc">Retiro en tienda disponible solo en locales
+                                                        habilitados.</li><br>
+                                                    <li type="disc">El contenido de la caja puede variar de acuerdo al
+                                                        stock de productos disponible.</li><br>
+                                                    <li type="disc">Imágenes de productos referenciales.</li><br>
+                                                    <li type="disc">No se permiten cambios o sustituciones de producto
+                                                        por marca.</li><br><b>COMPRA HOY, RECIBE MAÑANA</b>:<br> Válido
+                                                    desde el 09 de abril al 30 de mayo de 2020, por compras en
+                                                    www.lider.cl/catalogo de Lunes a Viernes hasta las 17:00 horas, o
+                                                    hasta agotar stock de 300 cupos diarios. Despacho disponible sólo
+                                                    para productos de la categoría “compra hoy, recibe mañana”,
+                                                    incluidas las cajas listas, en las siguientes comunas: Quilicura,
+                                                    Huechuraba, Renca, Recoleta, Independencia, Conchalí, Cerro Navia,
+                                                    Lo Prado, Pudahuel, Maipú, Cerrillos, Lo Espejo, Pedro Aguirre
+                                                    Cerda, La Cisterna, San Miguel, San Joaquín, San Ramón, La Granja,
+                                                    La Florida, Puente Alto, La Pintana, El Bosque, San Bernardo,
+                                                    Colina, Lampa, Batuco, Padre Hurtado, Talagante, Peñaflor, El Monte,
+                                                    Melipilla, Buín, Isla De Maipo, Calera De Tango, Paine, Estación
+                                                    Central, La Reina, Las Condes, Lo Barnechea, Macul, Ñuñoa,
+                                                    Penalolén, Providencia, Quinta Normal, Santiago, Vitacura, Viña Del
+                                                    Mar, Valparaíso, Rancagua, Machalí. Domingo y festivos no tendrán
+                                                    despacho.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="background: rgb(0, 113, 206);">
+        <footer class="footer">
+            <div class="container-footer">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-2">
+                        <div class="d-flex pt-10 pb-10 font-16">¿Necesitas Ayuda?</div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/faq" target="_blank">Preguntas
+                                frecuentes</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="/catalogo/help/servicio-tecnico" target="">Servicio técnico</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="http://walmartchile.paperless.cl/BoletaWeb/" target="_blank">Consulta tu
+                                boleta</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/devoluciones" target="_blank">Devoluciones
+                                y cambios</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.librodigitalchile.cl/Store/MenuLidercl/ODIw" target="_blank">Consultas
+                                y reclamos</a></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex pt-10 pb-10 font-16">Infórmate</div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/mediosdepago" target="_blank">Medios de
+                                pago</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/seguro" target="_blank">Pago 100%
+                                seguro</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/ganadoresconcursos"
+                                target="_blank">Ganadores de concursos</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/beneficios" target="_blank">Beneficios
+                                Lider.cl</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.tarjetaregalolider.cl/" target="_blank">Tarjeta de regalo</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.recetaslider.cl/" target="_blank">Recetas Lider</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.servifacil.cl/" target="_blank">Servifácil</a></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex pt-10 pb-10 font-16">Encuéntranos</div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/tiendas" target="_blank">Nuestros locales</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/pickup" target="_blank">Tiendas con
+                                Pickup</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/CoberturaSupermercado"
+                                target="_blank">Cobertura supermercado</a></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex pt-10 pb-10 font-16">Acerca de Lider</div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/acercadenosotros" target="_blank">Acerca de
+                                nosotros</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/terminos" target="_blank">Términos y
+                                condiciones</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/privacidad" target="_blank">Política de
+                                privacidad</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href="https://www.lider.cl/supermercado/info/informacion-legal"
+                                target="_blank">Información legal</a></div>
+                        <div class="d-flex pt-5 pb-5 text-left"><a class="font-weight-normal text-white"
+                                href=" http://www.empleoswalmartchile.cl/" target="_blank">Trabaja en Lider</a></div>
+                    </div>
+                    <div class="col-2">
+                        <div class="d-flex pt-10 pb-10 font-16">Síguenos</div>
+                        <div class="d-flex"><a href="https://www.twitter.com/lidercl" class="mr-20" target="_blank"
+                                rel="noopener noreferrer"><img alt="twitter-logo" src="https://www.lider.cl/catalogo/images/Twitter.svg"
+                                    width="18"></a><a href="https://www.facebook.com/lidercl" class="mr-20"
+                                target="_blank" rel="noopener noreferrer"><img alt="facebook-logo"
+                                    src="https://www.lider.cl/catalogo/images/Facebook.svg" width="18"></a><a
+                                href="https://www.youtube.com/user/supermercadoslider" class="mr-20" target="_blank"
+                                rel="noopener noreferrer"><img alt="youtube-logo" src="https://www.lider.cl/catalogo/images/Youtube.svg"
+                                    width="18"></a><a href="https://www.instagram.com/lider_cl" target="_blank"
+                                rel="noopener noreferrer"><img alt="instagram-logo" src="https://www.lider.cl/catalogo/images/Instagram.svg"
+                                    width="18"></a></div>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+        </footer>
+        <div class="bg-white pt-10">
+            <div class="d-flex justify-content-center pt-10">
+                <p class="pt-10 font-12">Nuestras empresas</p><a href="http://www.walmartchile.cl/" class="pl-10 pr-10"
+                    target="_blank" rel="noopener noreferrer"><img alt="walmart-chile" height="34"
+                        src="https://www.lider.cl/catalogo/images/wmt_chile.jpg"></a><a href="https://www.lider.cl/" class="pl-10 pr-10"
+                    target="_blank" rel="noopener noreferrer"><img alt="lider" height="34"
+                        src="https://www.lider.cl/catalogo/images/lider.jpg"></a><a href="https://www.lider.cl/" class="pl-10 pr-10" target="_blank"
+                    rel="noopener noreferrer"><img alt="lider-express" height="34" src="https://www.lider.cl/catalogo/images/express.jpg"></a><a
+                    href="http://www.superbodegaacuenta.cl/" class="pl-10 pr-10" target="_blank" rel="noopener noreferrer"><img
+                        alt="acuenta" height="34" src="https://www.lider.cl/catalogo/images/acuenta.jpg"></a><a
+                    href="https://www.centralmayorista.cl/" class="pl-10 pr-10" target="_blank" rel="noopener noreferrer"><img
+                        alt="central-mayorista" height="34" src="https://www.lider.cl/catalogo/images/central_mayorista.jpg"></a><a
+                    href="http://www.miclublider.cl/" class="pl-10 pr-10" target="_blank" rel="noopener noreferrer"><img
+                        alt="mi-club-lider" height="34" src="https://www.lider.cl/catalogo/images/mi_club_lider.jpg"></a>
+            </div>
+            <div class="d-flex justify-content-center pt-5 pb-5">
+                <div class="footer-divider"></div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <p class="font-10">Lider.cl - Razón Social: Lider Domicilio Ventas y Distribución Limitada, RUT: 78.968.610-6,
+                    es administrada y representada por Sermob Limitada, la que a su vez es representada por Matías Puente S.
+                    Dirección: Avenida del Valle N° 725, Huechuraba, Chile. </p>
+            </div>
+        </div>
+    </div>
+    
+</section>
