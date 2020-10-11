@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
 import { ConfigService } from '../config/config.service';
+import { Product } from '../model/product';
 
 @Component({
   selector: 'app-search',
@@ -10,13 +11,21 @@ import { ConfigService } from '../config/config.service';
 export class SearchComponent implements OnInit {
 
   constructor(public service: ConfigService) { }
-
+  searchBoxId = "";
   ngOnInit(): void {
   }
 
   searchProduct(){
-    let word = (<HTMLInputElement>document.getElementById('searchBoxId')).value;
-      this.service.searchProducts(word);
+    console.log("call search");
+    if(this.searchBoxId !== ''){
+      this.service.searchProducts(this.searchBoxId).subscribe((w : Product[]) => {
+        console.log("search :", w);
+        this.service.set(w);
+        this.service.setWord(this.searchBoxId);
+    });}
+    else{
+      this.service.set([]);
+    }
   }
 
 }

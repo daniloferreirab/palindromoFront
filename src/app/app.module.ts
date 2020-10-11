@@ -9,6 +9,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ConfigService } from './config/config.service';
 
 import { NgxPaginationModule } from 'ngx-pagination';
+import {FormsModule } from '@angular/forms';
 
 // LOCALE
 import { registerLocaleData } from '@angular/common';
@@ -25,7 +26,8 @@ registerLocaleData(localeEsCL, 'es-CL');
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [ConfigService,{ provide: LOCALE_ID, useValue: 'es-CL' }],
   bootstrap: [AppComponent,SearchComponent,
